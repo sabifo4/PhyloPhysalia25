@@ -651,7 +651,6 @@ Based on what we have done today and what we have been discussing so far during 
 * What do you think about our inference results? Are the inferred parameter values close to those we used to simulate our dataset?
 * If you were to carry out these analyses again, would you change anything? If so, which steps would you change and why? Would you run a different program?
 
-<br>
 <hr>
 <br>
 Hope you have enjoyed today's Bayesian phylogeny inference practical and... See you on Friday to learn more about Bayesian timetree inference with `MCMCtree`!
