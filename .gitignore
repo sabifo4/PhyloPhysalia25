@@ -1,0 +1,17 @@
+## Ignore vscode env
+.vscode 
+
+## PhyloBayes
+# Ignore output files and directories created during the practical
+PhylogenyInference/01_PhyloBayes/0*_*
+# Ignore tmp and test material
+PhylogenyInference/z_tmp
+
+## PAML - do not display until day 5
+# Ignore TimetreeInference directory until day 5
+# Then, comment the line below
+TimetreeInference
+# Ignore output files and directories created during the practical
+TimetreeInference/02_PAML/00_CODEML
+TimetreeInference/02_PAML/01_MCMCtree
+
