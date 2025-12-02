@@ -642,6 +642,8 @@ We simulated a 12-taxon alignment consisting of 50 AA residues ([`prot_aln.phy`]
 
 The abovementioned settings are ML estimates that were obtained when analysing a bacterial dataset with `CODEML`.
 
+</details>
+
 ----
 
 Based on what we have done today and what we have been discussing so far during the course, let's go back to the questions we started with and address them all together!
