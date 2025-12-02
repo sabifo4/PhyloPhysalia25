@@ -654,7 +654,7 @@ Based on what we have done today and what we have been discussing so far during 
 <hr>
 <br>
 
-Hope you have enjoyed today's Bayesian phylogeny inference practical and... See you on Friday to learn more about Bayesian timetree inference with `MCMCtree`.
+Hope you have enjoyed today's Bayesian phylogeny inference practical and... See you on Friday to learn more about Bayesian timetree inference with `PAML` :muscle: ! 
 
 <br>
 <br>
