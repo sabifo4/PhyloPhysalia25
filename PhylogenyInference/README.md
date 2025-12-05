@@ -498,13 +498,13 @@ What does each column mean in the `*trace` file?
 * `loglik`: log-likelihood score.
 * `length`: tree length.
 * `alpha`: shape parameter of the gamma distribution used to model rate heterogeneity across sites.
-* `nmode`: number of occupied components of the mixture.
+* `nmode`: number of occupied categories/components of the mixture.
 * `stat`: stationary entropy (diversity of stationary probabilities across sites).
 * `statalpha`: Dirichlet process concentration parameter (controls the granularity of site-specific substitution profiles).
 * `rrent`: entropy of the relative exchange rates (variability in substitution rate across sites).
 * `meanrr`: posterior means of the relative exchange rates across sites (reflects the rate of substitution at each site compared to a baseline or average rate across all sites).
 * `kappa`: transition/transversion rate, if applicable.
-* `allocent`: allocation of entropy.
+* `allocent`: site allocation entropy ([Shannon's entropy](https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf)). This variable seems to be related to information entropy about how "spread" the sites are across the different categories/components. For instance, if the sites are all assigned to one of these categories/components, the allocation entropy will be 0. The more even the sites are assigned to different categories/components, the higher this value will be.
 
 ## Model selection: cross-validation
 
@@ -630,6 +630,7 @@ We simulated a 12-taxon alignment consisting of 50 AA residues ([`prot_aln.phy`]
 * Alpha value for the gamma distribution used to account for rate heterogeneity: 0.76634
 * Number of categories to discretise the gamma distribution: 4
 * Tree length: 0.408202
+* Phylogeny (Newick format): `((G:0.02140600000000001,(H:0.004251000000000005,(I:0.013632999999999978,(J:6.680000000000019E-4,(K:0.024740000000000012,L:0.009313000000000016):0.02864):0.01876999999999998):0.01661500000000002):0.003263999999999989):0.0191145,(A:0.01153499999999999,(B:0.008105000000000001,(C:0.011129,(D:0.042204000000000005,(E:3.429999999999961E-4,F:0.09346699999999998):5.099999999999549E-5):0.012188000000000004):0.023247000000000004):0.026403999999999983):0.019114500000000013);`
 * AA substitution model: empirical+F model (`3`) using the LG exchangeability rates
 * AA frequencies:
 
