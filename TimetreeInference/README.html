@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="bayesian-timetree-inference-with-paml-approximating-the-likelihood-calculation-with-amino-acid-data">Bayesian timetree inference with <code>PAML</code>: approximating the likelihood calculation with amino acid data</h1>
+<h2 id="citation">Citation</h2>
+<p>If you use the scripts that you will find in this tutorial, please cite the following:</p>
+<p><strong>Álvarez-Carretero., S (2024). sabifo4/Tutorial_MCMCtree: v1.0.0 (tutorialMCMCtree-prerelease). Zenodo. https://doi.org/10.5281/zenodo.11306642</strong></p>
+<h2 id="introduction">Introduction</h2>
+<p>For this practical session, we have decided to use a mitochondrial dataset used in <a href="https://academic.oup.com/mbe/article/15/12/1600/963095">Yang et al. (1998)</a>, which is available in the <code>PAML</code> GitHub repository (i.e. <a href="https://github.com/abacus-gene/paml/blob/master/examples/mtCDNA/mtCDNApri.aa">protein sequence file</a> and <a href="https://github.com/abacus-gene/paml/blob/master/examples/DatingSoftBound/mtCDNApri.trees">calibrated tree file</a>).</p>
+<p>As explained in <a href="https://academic.oup.com/mbe/article/15/12/1600/963095">Yang et al. (1998)</a>, the molecular alignment consists of a subset of the mitochondrial data gathered by <a href="https://pubmed.ncbi.nlm.nih.gov/9732458/">Cao et al. (1998)</a> (i.e., 12 proteins except for <em>ND6</em> given that it is encoded by the opposite strand of the DNA quite different base and codon biases). After data processing, the final alignment consists of <strong>3,331 amino acid residues</strong> and <strong>7 mammal species</strong>:</p>
+<ul>
+<li>Human (<em>Homo sapiens</em>, D38112)</li>
+<li>Common chimpanzee (<em>Pan troglodytes</em>, D38113)</li>
+<li>Bonobo (<em>Pan paniscus</em>, D38116)</li>
+<li>Gorilla (<em>Gorilla gorilla</em>, D38114)</li>
+<li>Bornean orangutan (<em>Pongo pygmaeus pygmaeus</em>, D38115)</li>
+<li>Sumatran orangutan (<em>Pongo pygmaeus abelii</em>, X97707)</li>
+<li>Common gibbon (<em>Hylobates lar</em>, X99256).</li>
+</ul>
+<p>Please note that we have changed the calibration notation in <a href="00_inp_data/mtCDNApri.trees">our tree file</a> so that it is clearer which bounds are being used to constrain node ages. We also incorporated the root age in the tree as recommended (i.e., using option <code>RootAge</code> in the control file is somewhat discouraged).</p>
+<p>We have saved the input tree and sequence files in directory <a href="00_inp_data.tar.gz"><code>00_inp_data</code></a>. We used the <a href="https://github.com/abacus-gene/paml/blob/master/examples/DatingSoftBound/mcmctree.ctl">available control file</a> as a template to create our <a href="01_ctl_files.tar.gz">own template control files for today's analyses</a>, which follow the formatting recommended to use in the latest <code>PAML</code> release.</p>
+<blockquote>
+<p>[!NOTE]
+We have also included an alignment with the first two codon positions of the back-translated unambiguous nucleotide alignment (<a href="00_inp_data/mtCDNApri_nuc.phy"><code>mtCDNApri_nuc.phy</code></a>) based on the original partitioned alignment in the <a href="https://github.com/abacus-gene/paml/blob/master/examples/DatingSoftBound/mtCDNApri123.txt"><code>PAML</code> GitHub repository</a>. If we have time, we will explain how to analyse a partitioned dataset but, to keep things simple first, we shall proceed with a concatenated alignment.</p>
+</blockquote>
+<h2 id="analyses-with-paml-programs">Analyses with <code>PAML</code> programs</h2>
+<p>In this practical session, you will learn how to run <code>PAML</code> programs to approximate the likelihood calculation implemented by <a href="https://academic.oup.com/mbe/article/28/7/2161/1051613">dos Reis and Yang (2011)</a>, which has shown to speed up Bayesian timetree inference up to 1000x compared to the exact calculation of the likelihood (<a href="https://pubmed.ncbi.nlm.nih.gov/7288891/">Felsenstein, 1981</a>) without loosing accuracy (<a href="https://pubmed.ncbi.nlm.nih.gov/21498604/">Battistuzzi et al., 2011</a>).</p>
+<p>The workflow we shall go through is the following:</p>
+<ul>
+<li>Estimating the branch lengths, the gradient, and the Hessian with <code>CODEML</code>, which is what <code>MCMCtree</code> will then use to approximate the likelihood calculation.</li>
+<li>Running <code>MCMCtree</code> without the data (target distribution from which sampling takes place is the prior).</li>
+<li>MCMC diagnostics.</li>
+<li>Running <code>MCMCtree</code> with the data (target distribution from which sampling takes place is the posterior).</li>
+<li>MCMC diagnostics.</li>
+<li>Q&amp;A.</li>
+</ul>
+<p>Let's get started!</p>
+<h3 id="estimating-branch-lengths-hessian-and-gradient">Estimating branch lengths, Hessian, and gradient</h3>
+<p>Given that we have protein data, we will run <code>CODEML</code> to estimate the branch lengths, the gradient, and the Hessian that <code>MCMCtree</code> will later use to approximate the likelihood calculation -- we would run <code>BASEML</code> if we had nucleotide data!</p>
+<p>Firstly, we will create a copy of the <a href="01_ctl_files/mcmctree_codeml.ctl"><code>mcmctree_codeml.ctl</code> file</a>, which has all the options already pre-defined to run this analysis:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `02_PAML`</span>
+<span class="hljs-comment"># Please use your terminal to navigate to </span>
+<span class="hljs-comment"># this directory, then copy the commands below</span>
+<span class="hljs-comment"># on your terminal</span>
+mkdir -p 00_CODEML
+cp ../01_ctl_files/mcmctree_codeml.ctl 00_CODEML/
+</div></code></pre>
+<blockquote>
+<p>[!IMPORTANT]
+This control file is compatible with <code>PAML</code> versions 4.10.9 or older. As described in the <a href="https://github.com/abacus-gene/paml/wiki/MCMCtree#control-file"><code>PAML Wiki</code></a>, users need to now specify the type of construction they want for the tree prior through variable <code>BDparas</code>: either the multiplicative construction (i.e.,  add <code>m</code> or <code>M</code> as the last option for variable <code>BDparas</code>) or the conditional construction (i.e., add <code>c</code> or <code>C</code> as the last option for variable <code>BDparas</code>). You have more details about each of these constructions in the <a href="https://github.com/abacus-gene/paml/wiki/MCMCtree#control-file"><code>PAML Wiki</code> (section <code>Control File</code>)</a> under bullet point <code>BDparas</code> (e.g., you can search for this keyword using <code>ctrl+F</code> or <code>cmd+F</code>, depending on your OS). Please note that you shall get the following error if you try to use control files that would be compatible with <code>PAML</code> versions older than v4.10.9: <code>error: Flag for birth-death process prior expected: C for conditional, M for multiplicative</code>. If you are running this tutorial with your own data and you are running <code>PAML</code> v4.10.9 or later, please update your control files accordingly.</p>
+</blockquote>
+<p>Now, you will see that we have created a new directory, <code>00_CODEML</code>, where the control file we will be using can be found. If we wanted, we could either use commands such as <code>sed</code> to update the paths to the input sequence, tree, and matrix files using relative or absolute paths. E.g., given that our working directory will be <code>00_CODEML</code>, we will need to go back two directories to access directory <code>00_inp_data</code>, which would result in the following relative paths: <code>seqfile = ../../00_inp_Data/mtCDNApri.phy</code>,  <code>treefile = ../../00_inp_data/mtCDNApri.trees</code>, <code>aaRatefile = ../../00_inp_data/lg.dat</code>. Nevertheless, we will keep things a bit simpler and copy these input files inside directory <code>00_CODEML</code> so that we just keep the name of the input files in the control file:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Continue running from `02_PAML`</span>
+<span class="hljs-built_in">cd</span> 00_CODEML
+cp ../../00_inp_data/mtCDNApri.phy .
+cp ../../00_inp_data/mtCDNApri.trees .
+cp ../../00_inp_data/lg.dat .
+</div></code></pre>
+<p>We can now stop and take a look at how the control file looks like now:</p>
+<pre class="hljs"><code><div>          seed = -1                * Used timestamp to define seed number
+       seqfile = mtCDNApri.phy     * Path to input sequence file
+      treefile = mtCDNApri.trees   * Path to input tree file
+      mcmcfile = mcmc.txt          * Path to output file with MCMC samples
+       outfile = out.txt           * Path to log output file
+
+         ndata = 1        * Number of partitions
+       seqtype = 2        * 0: nucleotides; 1:codons; 2:AAs
+       usedata = 3        * 0: no data (prior); 1:exact likelihood; 2:approximate likelihood; 3:out.BV (in.BV)
+         clock = 3        * 1: global clock; 2: independent rates; 3: correlated rates
+
+         model = 3        * 0:poisson, 1:proportional,2:Empirical,3:Empirical+F
+                          * 6:FromCodon, 8:REVaa_0, 9:REVaa(nr=189)
+         alpha = 0.5      * alpha for gamma rates at sites
+         ncatG = 5        * No. categories in discrete gamma
+    aaRatefile = lg.dat   * Path to the file with the LG matrix
+
+     cleandata = 0        * remove sites with ambiguity data (1:yes, 0:no)?
+
+       BDparas = 1 1 0.1 m * birth, death, sampling, type of construction
+   rgene_gamma = 2 20      * gammaDir prior for rate for genes
+  sigma2_gamma = 1 10      * gammaDir prior for sigma^2     (for clock=2 or 3)
+
+         print = 1        * 0: no mcmc sample; 1: everything except branch rates 2: everything
+        burnin = 1000     * Number of iterations that will be discarded as part of burn-in
+      sampfreq = 100      * Sampling frequency
+       nsample = 20000    * Number of samples to be collected
+</div></code></pre>
+<blockquote>
+<p>[!IMPORTANT]
+Remember that, at the moment, we are not interested in running <code>MCMCtree</code> until &quot;the end&quot;. We will just execute this program with option <code>usedata = 3</code> so that we can obtain the <code>tmp*</code> files that we need to  run <code>CODEML</code>.</p>
+</blockquote>
+<p>Now, we have everything we need to run <code>CODEML</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_CODEML`</span>
+<span class="hljs-comment"># You should still be inside `00_CODEML`</span>
+<span class="hljs-comment"># If not, please change directories </span>
+<span class="hljs-comment"># until you are there and run the </span>
+<span class="hljs-comment"># following command</span>
+mcmctree *ctl
+</div></code></pre>
+<p>As aforementioned, we will not let the command above run <code>MCMCtree</code> until the end. We will wait until the <code>tmp*</code> files are generated, and then kill the job by using <code>ctrl+C</code> ss soon as we see the text below (which is what we have seen in the demo!):</p>
+<pre class="hljs"><code><div>*** Locus 1 ***
+running codeml tmp0001.ctl
+
+AAML in paml version 4.10.9, 7 May 2025
+ns = 7          ls = 469
+Reading sequences, sequential format..
+Reading seq # 7: gibbon
+Sequences read..
+
+469 site patterns read, 3331 sites
+Counting frequencies..
+
+      168 bytes for distance
+   150080 bytes for conP
+    18760 bytes for fhK
+  5000000 bytes for space
+</div></code></pre>
+<p>When running the command above, we just wanted to execute <code>MCMCtree</code> with option <code>usedata = 3</code> so that this program generates the <code>tmp000*</code> files that <code>CODEML</code> will then need as input files to estimate the branch lengths, the gradient, and the Hessian. We carry out this analysis in two steps so that we can <strong>replace option <code>method = 0</code> with <code>method = 1</code> in the <code>tmp0001.ctl</code> file</strong> that will be output with the commands above. As explained in the <a href="https://github.com/abacus-gene/paml/blob/master/doc/pamlDOC.pdf"><code>PAML</code> documentation</a> (at the time of writing, page 56), <strong>the iteration algorithm enabled when setting <code>method = 1</code> is much more efficient with large datasets than the algorithm enabled when setting <code>method = 0</code></strong>. While we are using a small dataset now just to keep running time simple, phylogenomic datasets will benefit from having <code>method = 1</code>, hence why we are dividing the analysis in two steps and checking for this option being <code>method = 1</code>.</p>
+<p>Once the job is killed and the <code>tmp*</code> files are created, we can run the following commands to make sure that the correct settings to run <code>CODEML</code> are enabled:</p>
+<blockquote>
+<p>[!IMPORTANT]
+If you are a Mac user and you have not configured the <code>sed</code> command so that it works as in a Linux-based computer, please skip the next code snippet and run the one that you shall see afterwards!</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_CODEML`.</span>
+<span class="hljs-comment"># See the content of the control file</span>
+cat tmp0001.ctl
+<span class="hljs-comment"># We want `method = 1`; update this variable</span>
+<span class="hljs-comment"># accordingly</span>
+sed -i <span class="hljs-string">'s/method\ \=\ 0/method\ \=\ 1/'</span> tmp0001.ctl
+<span class="hljs-comment"># Print again the control file to check</span>
+<span class="hljs-comment"># that the control file has been</span>
+<span class="hljs-comment"># successfully updated</span>
+cat tmp0001.ctl
+</div></code></pre>
+<p>If you are a Mac user and have issues with the <code>sed</code> command, please run the following command instead. If you have successfully run the command above, please skip the next code snippet:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_CODEML`.</span>
+<span class="hljs-comment"># Update `method`</span>
+awk <span class="hljs-string">'{gsub(/method = 0/,"method = 1")}1'</span> tmp0001.ctl &gt; tmp0001_cp.ctl
+mv tmp0001_cp.ctl tmp0001.ctl
+</div></code></pre>
+<p>Now, we can check that all the settings look as they should:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_CODEML`.</span>
+grep <span class="hljs-string">'method = 1'</span> tmp0001.ctl | wc -l <span class="hljs-comment"># You should get the number of datasets you have</span>
+grep <span class="hljs-string">'alpha'</span> tmp0001.ctl   <span class="hljs-comment"># You should see `fix_alpha = 0` and `alpha = 0.5`</span>
+grep <span class="hljs-string">'ncatG'</span> tmp0001.ctl   <span class="hljs-comment"># You should see `ncatG = 5`</span>
+grep <span class="hljs-string">'model'</span> tmp0001.ctl   <span class="hljs-comment"># You should see `model = 3` (i.e., Empirical+F)</span>
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+If you open the <code>tmp0001.ctl</code>, you will see that options <code>mcmcfile</code>, <code>clock</code>, <code>BDparas</code>, <code>rgene_gama</code>, <code>sigma2_gamma</code>, <code>print</code>, <code>burnin</code>, <code>sampfreq</code>, and <code>nsample</code> are ignored. Only options regarding the evolutionary model, type of data, and paths to input data are saved from the <code>mcmctree_codeml.ctl</code> -- as we said before, the other options are safely ignored!</p>
+</blockquote>
+<p>Now, we can run <code>CODEML</code>!</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_CODEML`.</span>
+<span class="hljs-comment"># You should still be in this directory </span>
+<span class="hljs-comment"># but, if not, please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+mkdir codeml
+<span class="hljs-comment"># We will copy all tmp* files that have been</span>
+<span class="hljs-comment"># generated</span>
+cp tmp0001* codeml
+<span class="hljs-comment"># We will copy again the `lg.dat`, although</span>
+<span class="hljs-comment"># you could edit `tmp0001.ctl` either via</span>
+<span class="hljs-comment"># text editor or command line (e.g., `sed`</span>
+<span class="hljs-comment"># or `awk`) to have a </span>
+<span class="hljs-comment"># relative path to this file</span>
+cp lg.dat codeml
+<span class="hljs-built_in">cd</span> codeml
+<span class="hljs-comment"># Remove unnecessary output file</span>
+rm tmp0001.out
+<span class="hljs-comment"># Run `CODEML` without printing on the screen</span>
+<span class="hljs-comment"># because the screen output will be saved</span>
+<span class="hljs-comment"># in a text file</span>
+codeml *ctl &gt; log_CODEML.txt
+</div></code></pre>
+<p>The branch lengths, the gradient, and the Hessian are stored in output file <code>rst2</code>, which we will rename as <code>in.BV</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `codeml`</span>
+<span class="hljs-comment"># You should still be in directory </span>
+<span class="hljs-comment"># `codeml` but, if not, please change</span>
+<span class="hljs-comment"># directories until you are there.</span>
+<span class="hljs-comment"># Then, run the following commands.</span>
+cp rst2 ../in.BV
+<span class="hljs-comment"># Remove files that are no longer</span>
+<span class="hljs-comment"># required inside `00_CODEML`</span>
+<span class="hljs-built_in">cd</span> ../
+rm out* r* tmp* SeedUsed lnf
+</div></code></pre>
+<details>
+<summary><b>TIPS FOR ANALYSES WITH PARTITIONED DATASETS</b></summary>
+<br>
+<p><i>If you were analysing a partitioned dataset, you would have obtained one <code>rst2</code> for each alignment block (i.e., <code>CODEML</code> would have been run independently for each alignment block included in your input sequence file). In such case, you would have needed to concatenate the content of the <code>rst2</code> files in a unique file, the so-called <code>in.BV</code> file. Note that these <code>rst2</code> files should be appended in the same order as they appear in the partitioned sequence file to generate the <code>in.BV</code> file (i.e., <code>rst2</code> file output when reading the first alignment block will be first, then the <code>rst2</code> output file generated for the second alignment block will be second, etc.).</i></p>
+</details>
+<br>
+<p>Now, we have everything we need to run <code>MCMCtree</code>!</p>
+<h3 id="running-mcmctree">Running <code>MCMCtree</code></h3>
+<p>We are going to run <code>MCMCtree</code> when sampling from the prior (i.e., no data are used, useful to check whether there are problems between the calibration densities specified by the user and the corresponding marginal densities inferred by the program) and from the posterior (i.e., data are used).</p>
+<p>We will run 6 chains when sampling from the prior and 6 chains when sampling from the posterior under the independent-rates log-normal (ILN) relaxed-clock model and the geometric Brownian motion model (GBM, also known as the autocorrelated-rates model):</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_CODEML`.</span>
+<span class="hljs-comment"># You should still be in this directory </span>
+<span class="hljs-comment"># but, if not, please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+<span class="hljs-built_in">cd</span> ../
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 6`
+<span class="hljs-keyword">do</span>
+<span class="hljs-comment"># Create file structure for the analyses we will carry out</span>
+mkdir -p 01_MCMCtree/{00_prior/NODAT,01_posterior/{GBM,ILN}}/<span class="hljs-variable">$i</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"[[ Copy files for chain "</span><span class="hljs-variable">$i</span><span class="hljs-string">" ]]\n"</span>
+<span class="hljs-comment"># Copy control files for analyses when </span>
+<span class="hljs-comment"># sampling from the prior and the posterior</span>
+cp ../01_ctl_files/mcmctree_NODAT.ctl 01_MCMCtree/00_prior/NODAT/<span class="hljs-variable">$i</span>/mcmctree_NODAT<span class="hljs-variable">$i</span>.ctl
+cp ../01_ctl_files/mcmctree_ILN.ctl 01_MCMCtree/01_posterior/ILN/<span class="hljs-variable">$i</span>/mcmctree_ILN<span class="hljs-variable">$i</span>.ctl
+cp ../01_ctl_files/mcmctree_GBM.ctl 01_MCMCtree/01_posterior/GBM/<span class="hljs-variable">$i</span>/mcmctree_GBM<span class="hljs-variable">$i</span>.ctl
+<span class="hljs-comment"># Even though we could edit the control files</span>
+<span class="hljs-comment"># with relative paths to input sequence files </span>
+<span class="hljs-comment"># and the file with the LG matrix, we will copy</span>
+<span class="hljs-comment"># these files in each directory</span>
+cp ../00_inp_data/lg.dat 01_MCMCtree/00_prior/NODAT/<span class="hljs-variable">$i</span>/
+cp ../00_inp_data/lg.dat 01_MCMCtree/01_posterior/ILN/<span class="hljs-variable">$i</span>/
+cp ../00_inp_data/lg.dat 01_MCMCtree/01_posterior/GBM/<span class="hljs-variable">$i</span>/
+cp 00_CODEML/mtCDNApri* 01_MCMCtree/00_prior/NODAT/<span class="hljs-variable">$i</span>/
+cp 00_CODEML/mtCDNApri* 01_MCMCtree/01_posterior/ILN/<span class="hljs-variable">$i</span>/
+cp 00_CODEML/mtCDNApri* 01_MCMCtree/01_posterior/GBM/<span class="hljs-variable">$i</span>/
+<span class="hljs-comment"># Copy the `in.BV` file to the directories where we</span>
+<span class="hljs-comment"># are sampling from the posterior!</span>
+cp 00_CODEML/in.BV 01_MCMCtree/01_posterior/ILN/<span class="hljs-variable">$i</span>/
+cp 00_CODEML/in.BV 01_MCMCtree/01_posterior/GBM/<span class="hljs-variable">$i</span>/
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<p>Now, we can run <code>MCMCtree</code>! You can either run it on your PC or decide whether you want to prepare a job array to run these analyses on a HPC cluster:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `02_PAML`</span>
+<span class="hljs-comment"># You should still be in this directory </span>
+<span class="hljs-comment"># but, if not, please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+<span class="hljs-built_in">cd</span> 01_MCMCtree
+home_dir=$( <span class="hljs-built_in">pwd</span> )
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 6`
+<span class="hljs-keyword">do</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$home_dir</span>/00_prior/NODAT/<span class="hljs-variable">$i</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"[[ Running MCMCtree for chain "</span><span class="hljs-variable">$i</span><span class="hljs-string">" | prior ]]\n"</span>
+<span class="hljs-comment"># Run `MCMCtree` while you see the screen output but</span>
+<span class="hljs-comment"># you also save it in a file called `log_mcmc$i"_prior.txt"`</span>
+<span class="hljs-comment"># You will run this analysis when sampling from the prior,</span>
+<span class="hljs-comment"># the posterior under GBM and the posterior under ILN</span>
+mcmctree *ctl 2&gt;&amp;1 | tee log_mcmc<span class="hljs-variable">$i</span><span class="hljs-string">"_prior.txt"</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"[[ Running MCMCtree for chain "</span><span class="hljs-variable">$i</span><span class="hljs-string">" | posterior (ILN) ]]\n"</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$home_dir</span>/01_posterior/ILN/<span class="hljs-variable">$i</span>
+mcmctree *ctl 2&gt;&amp;1 | tee log_mcmc<span class="hljs-variable">$i</span><span class="hljs-string">"_postILN.txt"</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"[[ Running MCMCtree for chain "</span><span class="hljs-variable">$i</span><span class="hljs-string">" | posterior (GBM) ]]\n"</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$home_dir</span>/01_posterior/GBM/<span class="hljs-variable">$i</span>
+mcmctree *ctl 2&gt;&amp;1 | tee log_mcmc<span class="hljs-variable">$i</span><span class="hljs-string">"_postGBM.txt"</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$home_dir</span>
+<span class="hljs-comment">##&gt; These analyses took 7 min to complete on a PC </span>
+<span class="hljs-comment">##&gt; using the WSL (Ubuntu 22.04LTS) when no other</span>
+<span class="hljs-comment">##&gt; tasks were running</span>
+<span class="hljs-comment">##&gt; SPECS:</span>
+<span class="hljs-comment">##&gt; 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz</span>
+<span class="hljs-comment">##&gt; 32Gb RAMw</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Get one example of the tree with node number</span>
+<span class="hljs-comment"># as it is easier for us to know which node belongs</span>
+<span class="hljs-comment"># to which label</span>
+grep <span class="hljs-string">'Species tree for FigTree'</span> -A1 00_prior/NODAT/1/out.txt | sed -n <span class="hljs-string">'2,2p'</span> &gt; 00_prior/node_tree.tree
+</div></code></pre>
+<blockquote>
+<p>[!IMPORTANT]
+When analysing your own datasets, you should always first run <code>MCMCtree</code> when sampling from the prior, proceed to carry out MCMC diagnostics (we will discuss this now!), and make sure that there are no problems between the calibration densities you specified and the marginal densities <code>MCMCtree</code> inferred. If you observed serious discrepancies, you would need to go back to your calibrations and check whether you made a mistake or you need to adjust them until the marginal densities really represent your belief about the fossil record. Then, once everything looks alright, you can run <code>MCMCtree</code> when sampling from the posterior, and then run again the MCMC diagnostics. Nevertheless, we are running <code>MCMCtree</code> both when sampling from the prior and the posterior so that we can have the output files ready for both MCMC diagnostics quicker. In other words, timetree inference workflow should look like the following (text within square brackets may not be required if everything went fine the first time!):<br>
+<code>prior --&gt; MCMC diagnostics --&gt; [prior again if checks failed --&gt; MCMC diagnostics again] --&gt; posterior if everything is fine --&gt; MCMC diagnostics --&gt; [posterior if checks failed --&gt; MCMC diagnostics again]</code>.</p>
+</blockquote>
+<p>We can now open <code>FigTree</code> and plot the recently created <code>node_tree.tree</code> tree file with labelled nodes alongside the calibrated tree file <code>mtCDNApri.trees</code>:</p>
+<p align="center">
+<img width="400" height="250" src="figs/calib_tree.jpg">
+<img width="400" height="250" src="figs/node_tree.jpg">
+</p>
+<p>As you can see, the following nodes were calibrated:</p>
+<ul>
+<li><code>t_n8</code>: root age, constrained with upper bound <code>U(1.0)</code> (maximum age = 1.0; time unit = 100Mya | 100 Mya).</li>
+<li><code>t_n9</code>: last common ancestor of great apes (all taxa but gibbon), node constrained with soft bound <code>B(.12,.16)</code> (minimum age = 0.12, maximum age = 0.16; time unit = 100 Mya | 12 - 16 Mya).</li>
+<li><code>t_n11</code>: last common ancestor of human, chimpanzee, and bonobo; node constrained with soft bound <code>B(.06,.08)</code> (minimum age = 0.06, maximum age = 0.08; time unit = 100 Mya | 8 Mya).</li>
+</ul>
+<p>If you wanted to plot the calibration densities (those we specified in the tree file to constrain the) and see how they look like, you can use the <code>mcmc3r</code> R package to do so!</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Open R on RStudio and, if you have already</span>
+<span class="hljs-comment"># installed the `mcmc3r` R package you</span>
+<span class="hljs-comment"># can run the following commands</span>
+<span class="hljs-comment">#</span>
+<span class="hljs-comment"># Create 1 row with 3 columns</span>
+<span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> The x axis will be reversed (i.e., from</span>
+<span class="hljs-comment"># older to younger) so that it is</span>
+<span class="hljs-comment"># easier to interpret the calibration densities</span>
+par( mfrow = c( <span class="hljs-number">1</span>, <span class="hljs-number">3</span> ) )
+<span class="hljs-comment">##&gt; Plot the upper-bound calibration for the root</span>
+curve( mcmc3r::dU( x, tU = <span class="hljs-number">1.0</span> ), from = <span class="hljs-number">0</span>, to = <span class="hljs-number">1.1</span>,
+       n = <span class="hljs-number">1e4</span>, xlim = rev( c( <span class="hljs-number">0</span>, <span class="hljs-number">1.2</span> ) ),
+       xlab = <span class="hljs-string">"Time (Mya)"</span>, ylab = <span class="hljs-string">"Density"</span>,
+       main = <span class="hljs-string">"Soft Maximum t_n8 | 'U(1.0)'"</span> )
+abline( v = c( <span class="hljs-number">1.0</span> ), col = <span class="hljs-string">"#56B4E9"</span> )
+<span class="hljs-comment">##&gt; Plot the soft-bound calibration for node 9, LCA of great apes</span>
+curve( mcmc3r::dB( x, tL = <span class="hljs-number">0.12</span>, tU = <span class="hljs-number">0.16</span>, pL = <span class="hljs-number">0.025</span>, pU = <span class="hljs-number">0.025</span> ),
+       from = <span class="hljs-number">0.08</span>, to = <span class="hljs-number">0.2</span>, n = <span class="hljs-number">1e4</span>, xlim = rev( c( <span class="hljs-number">0.08</span>, <span class="hljs-number">0.2</span> ) ),
+       xlab = <span class="hljs-string">"Time (Mya)"</span>, ylab = <span class="hljs-string">"Density"</span>,
+       main = <span class="hljs-string">"Soft Maximum &amp; Minimum t_n9 | 'B(0.12,0.16,0.025,0.025)'"</span> )
+abline( v = c( <span class="hljs-number">0.12</span>, <span class="hljs-number">0.16</span> ), col = <span class="hljs-string">"#56B4E9"</span> )
+<span class="hljs-comment">##&gt; Plot the soft-bound calibration for node 11, LCA of H-C-B</span>
+curve( mcmc3r::dB( x, tL = <span class="hljs-number">0.06</span>, tU = <span class="hljs-number">0.08</span>, pL = <span class="hljs-number">0.025</span>, pU = <span class="hljs-number">0.025</span> ),
+       from = <span class="hljs-number">0.04</span>, to = <span class="hljs-number">0.1</span>, n = <span class="hljs-number">1e4</span>, xlim = rev( c( <span class="hljs-number">0.04</span>, <span class="hljs-number">0.1</span> ) ),
+       xlab = <span class="hljs-string">"Time (Mya)"</span>, ylab = <span class="hljs-string">"Density"</span>,
+       main = <span class="hljs-string">"Soft Maximum &amp; Minimum t_n11 | 'B(0.06,0.08,0.025,0.025)'"</span> )
+abline( v = c( <span class="hljs-number">0.06</span>, <span class="hljs-number">0.08</span> ), col = <span class="hljs-string">"#56B4E9"</span> )
+</div></code></pre>
+<p align="center">
+<img width="1000" height="400" src="figs/calib_densities.jpg">
+</p>
+<blockquote>
+<p>[!NOTE]
+The plots above can be very useful to visualise how your prior/s to constrain node ages look/s like! This type of distribution is the &quot;calibration density&quot;, although you can also find researchers in the literature referring to these distributions as the &quot;user-specified&quot; prior/s.</p>
+</blockquote>
+<h3 id="main-mcmc-diagnostics">Main MCMC diagnostics</h3>
+<p>Now that we have the output files from the different MCMC runs in an organised file structure, we are ready to run MCMC diagnostics! We will start by analysing the samples we collected when sampling from the prior and then, if there are no problems, we will proceed to analyse those collected when sampling took place from the posterior as the target distribution.</p>
+<h4 id="prior">Prior</h4>
+<p>Firstly, we are going to check the <code>mcmc.txt</code> output files for all the chains we ran when sampling from the prior as the target distribution. For visual plots, we can use <code>Tracer</code>! Below, you can find some examples of how the plots may look like:</p>
+<blockquote>
+<p>Marginal densities for the root age</p>
+</blockquote>
+<p align="center">
+<img width="400" height="250" src="figs/NODAT_root_margdens.png">
+</p>
+<blockquote>
+<p>Traces for the root age</p>
+</blockquote>
+<p align="center">
+<img width="400" height="250" src="figs/NODAT_root_trace.png">
+</p>
+<blockquote>
+<p>All marginal densities together</p>
+</blockquote>
+<p align="center">
+<img width="400" height="250" src="figs/NODAT_all_margdens.png">
+<img width="400" height="250" src="figs/NODAT_all_margdens_comb.png">
+</p>
+<p>It seems that there are no problematic chains and, given that all the chains seem to have converged to the same target distribution, we can concatenate all the samples collected across the chains in a unique file:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `02_PAML/scripts`</span>
+<span class="hljs-comment"># Please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+chmod 775 *sh
+cp Combine_MCMC.sh ../01_MCMCtree/00_prior
+<span class="hljs-comment"># One argument taken: number of chains</span>
+<span class="hljs-built_in">cd</span> ../01_MCMCtree/00_prior
+<span class="hljs-comment"># Change permissions in case you still</span>
+<span class="hljs-comment"># do not have them</span>
+chmod 775 *sh
+<span class="hljs-comment">## Variables needed</span>
+<span class="hljs-comment">## arg1 --&gt; path to directory where analyses have taken place (e.g., CLK, GBM, ILN)</span>
+<span class="hljs-comment">## arg2 --&gt; output dir: mcmc_files_CLK, mcmc_files_GBM, mcmc_files_ILN, etc.</span>
+<span class="hljs-comment">## arg3 --&gt; "`seq 1 36`", "1 2 5", etc. | depends on whether some chains were filtered out or not</span>
+<span class="hljs-comment">## arg4 --&gt; clock model used: ILN, GBM, CLK</span>
+<span class="hljs-comment">## arg5 --&gt; number of samples specified to collect in the control file to run `MCMCtree`</span>
+<span class="hljs-comment">## arg6 --&gt; 'Y' to generate a directory with files compatible with programs such as `Tracer` to visually</span>
+<span class="hljs-comment">##          inspect traceplots, convergence plots, etc. 'N' otherwise</span>
+<span class="hljs-comment">## arg7 --&gt; if arg6 is 'Y', arg7 needs to have a name for the `mcmcf4traces_&lt;name&gt;` that will be</span>
+<span class="hljs-comment">##          generated. If `arg6` is equal to 'N', then please write `N` too.</span>
+path_to_data=$( <span class="hljs-built_in">echo</span> NODAT )
+num_dat=1
+name_dat=( <span class="hljs-string">'mtcdnapri'</span> ) <span class="hljs-comment"># if you had more datasets, you would add them here!</span>
+count=-1 <span class="hljs-comment">#  counter will start at 0 in first iteration!</span>
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$num_dat</span>`
+<span class="hljs-keyword">do</span>
+count=$(( count + 1 ))
+<span class="hljs-comment"># Run the in-house script to generate concatenated</span>
+<span class="hljs-comment"># `mcmc.txt` file and the individual `mcmc.txt` files</span>
+<span class="hljs-comment"># ready to visually inspect in e.g., Tracer</span>
+./Combine_MCMC.sh <span class="hljs-variable">$path_to_data</span> mcmc_files_<span class="hljs-variable">${name_dat[count]}</span>_NODAT <span class="hljs-string">"`seq 1 6`"</span> NODAT 20000 Y <span class="hljs-variable">${name_dat[count]}</span>_NODAT
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+Given that there is only one dataset, the command above would essentially be the following:</p>
+<pre class="hljs"><code><div>./Combine_MCMC.sh NODAT mcmc_files_mtcdnapri_NODAT <span class="hljs-string">"`seq 1 6`"</span> NODAT 20000 Y mtcdnapri_NODAT
+</div></code></pre>
+<p>Nevertheless, we have written the full <code>for</code> loop in case you want to reuse this script with your data!</p>
+</blockquote>
+<p>The script above will generate a directory called <code>mcmc_files_&lt;name_dataset&gt;_NODAT</code> inside the <code>00_prior</code> directory, where the <code>mcmc.txt</code> with the concatenated samples will be saved. In addition, a directory called <code>mcmcf4traces_&lt;namedataset&gt;_NODAT</code> will also be generated so that formatted MCMC files compatible with programs such as <code>Tracer</code> can be used to check for chain convergence.</p>
+<p>A template script to generate the <code>FigTree.tre</code> file with this concatenated <code>mcmc.txt</code> has been also saved inside the <a href="02_PAML/dummy_ctl_files/mcmctree_dummy.ctl"><code>dummy_ctl_files</code></a> directory. In addition, a dummy alignment with only 2 amino acid residues has been saved inside <code>dummy_aln</code> to quickly run <code>MCMCtree</code> with option <code>print = -1</code>. This setting will basically (i) ignore all the settings regarding the evolutionary model and the MCMC, (ii) read the <code>mcmc.txt</code> file which path is set in option <code>mcmcfile</code>, (iii) and summarise all the samples in such file to generate a timetree. Now, we are ready to run <code>MCMCtree</code> with option <code>print = -1</code>! Note that the <code>mcmc.txt</code> file will have all the samples collected by the chains that passed previous filters during MCMC diagnostics.</p>
+<blockquote>
+<p>[!IMPORTANT]
+To avoid copying input files again, we have already prepared the aforementioned dummy control file with the relative paths to the input sequence data!</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `00_prior`</span>
+<span class="hljs-comment"># You should still be in this directory </span>
+<span class="hljs-comment"># but, if not, please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+name_dat=( <span class="hljs-string">'mtcdnapri'</span> ) <span class="hljs-comment"># you would list more datasets here</span>
+num_dat=1
+count=-1
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$num_dat</span>`
+<span class="hljs-keyword">do</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"\n[[ ANALYSING DATASET "</span><span class="hljs-variable">${name_dat[count]}</span><span class="hljs-string">" ]]\n\n"</span>
+count=$(( count + 1 ))
+base_dir=$( <span class="hljs-built_in">pwd</span> )
+<span class="hljs-comment"># Go to directory where the concatenated</span>
+<span class="hljs-comment"># `mcmc.txt` file is and start preparing</span>
+<span class="hljs-comment"># the directory to run `MCMCtree` with</span>
+<span class="hljs-comment"># option `print = -1`</span>
+<span class="hljs-built_in">cd</span> mcmc_files_<span class="hljs-variable">${name_dat[count]}</span>_NODAT
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"[[ Generating tree file for concatenated \"mcmc.txt\"  ... ... ]]\n"</span>
+cp ../../../dummy_ctl_files/*ctl .
+<span class="hljs-comment"># Run now `MCMCtree` after having modified</span>
+<span class="hljs-comment"># the global vars according to the path to</span>
+<span class="hljs-comment"># these files. Then, rename the output tree</span>
+<span class="hljs-comment"># file so we can easily identify later which</span>
+<span class="hljs-comment"># tree belongs to which dataset easier</span>
+mcmctree *ctl
+mv FigTree.tre FigTree_<span class="hljs-variable">${name_dat[count]}</span><span class="hljs-string">"_NODAT_95HPD.tree"</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$base_dir</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+As per the previous code snippet, the <code>for</code> loop above would run once because there is only one dataset. Nevertheless, we have written the full <code>for</code> loop in case you want to reuse this script with your data!</p>
+</blockquote>
+<h4 id="posterior">Posterior</h4>
+<p>Now, we have to do the same for the samples we collected when running <code>MCMCtree</code> with our data! Firstly, let's check our trace files with <code>Tracer</code>! Below, you can find some examples of how the plots may look like:</p>
+<blockquote>
+<p>Marginal densities for the root age (GBM)</p>
+</blockquote>
+<p align="center">
+<img width="400" height="250" src="figs/GBM_root_margdens.png">
+</p>
+<blockquote>
+<p>Traces for the root age (GBM)</p>
+</blockquote>
+<p align="center">
+<img width="400" height="250" src="figs/GBM_root_trace.png">
+</p>
+<blockquote>
+<p>All marginal densities together (GBM)</p>
+</blockquote>
+<p align="center">
+<img width="400" height="250" src="figs/GBM_all_margdens.jpg">
+<img width="400" height="250" src="figs/GBM_all_margdens_comb.png">
+</p>
+<blockquote>
+<blockquote>
+<p>Similar plots are obtained when data were analysed under ILN!</p>
+</blockquote>
+</blockquote>
+<p>We could also plot our marginal densities against our posterior time densities under both relaxed-clock models to check how informative the data we analyse are. If they are too similar, the data may not be quite informative about the parameters of interest (i.e., divergence times). The ideal scenario happens when both the prior and posterior densities overlap but the latter is narrower and more concentrated within the prior region: the prior is reasonable and the data are informative enough. If the prior and the posterior were in conflict, the prior may have been misspecified, and thus may have to be updated (e.g., plots showing the marginal densities against the calibration densities may be helpful in such cases!).</p>
+<blockquote>
+<p>[!IMPORTANT]
+Priors are specified before the data are analysed, and thus should never be made to match the posterior. You may want to read <a href="https://www.nature.com/articles/s41559-017-0280-x.pdf">Nascimento et al. 2017</a> for more details on the matter!</p>
+</blockquote>
+<p align="center">
+<img width="200" height="150" src="figs/Root_GBM-ILN-NODAT.jpg">
+<img width="200" height="150" src="figs/tn9_GBM-ILN-NODAT.jpg">
+<img width="200" height="150" src="figs/tn10_GBM-ILN-NODAT.jpg">
+<img width="200" height="150" src="figs/tn11_GBM-ILN-NODAT.jpg">
+<img width="200" height="150" src="figs/tn12_GBM-ILN-NODAT.jpg">
+<img width="200" height="150" src="figs/tn13_GBM-ILN-NODAT.jpg">
+</p>
+<p>It seems that there are no problematic chains when we ran <code>MCMCtree</code> with our data, and the data seem informative enough given that the posterior densities are more concentrated than the marginal densities and within these densities. In addition, the traces and convergence plots seem to show that all the chains have converged to the same target distribution under each model, respectively. Consequently, we can concatenate all the samples collected across the chains in a unique file for each clock, respectively:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `02_PAML/scripts`</span>
+<span class="hljs-comment"># You should still be in this directory </span>
+<span class="hljs-comment"># but, if not, please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+cp Combine_MCMC.sh ../01_MCMCtree/01_posterior
+<span class="hljs-comment"># One argument taken: number of chains</span>
+<span class="hljs-built_in">cd</span> ../01_MCMCtree/01_posterior
+<span class="hljs-comment"># Change permissions in case there are </span>
+<span class="hljs-comment"># still problems</span>
+chmod 775 *sh
+<span class="hljs-comment">## Variables needed</span>
+<span class="hljs-comment">## arg1 --&gt; path to directory where analyses have taken place (e.g., CLK, GBM, ILN)</span>
+<span class="hljs-comment">## arg2 --&gt; output dir: mcmc_files_CLK, mcmc_files_GBM, mcmc_files_ILN, etc.</span>
+<span class="hljs-comment">## arg3 --&gt; "`seq 1 36`", "1 2 5", etc. | depends on whether some chains were filtered out or not</span>
+<span class="hljs-comment">## arg4 --&gt; clock model used: ILN, GBM, CLK</span>
+<span class="hljs-comment">## arg5 --&gt; number of samples specified to collect in the control file to run `MCMCtree`</span>
+<span class="hljs-comment">## arg6 --&gt; 'Y' to generate a directory with files compatible with programs such as `Tracer` to visually</span>
+<span class="hljs-comment">##          inspect traceplots, convergence plots, etc. 'N' otherwise</span>
+<span class="hljs-comment">## arg7 --&gt; if arg6 is 'Y', arg7 needs to have a name for the `mcmcf4traces_&lt;name&gt;` that will be</span>
+<span class="hljs-comment">##          generated. If `arg6` is equal to 'N', then please write `N` too.</span>
+path_to_data=( <span class="hljs-string">'ILN'</span> <span class="hljs-string">'GBM'</span> )
+num_clock=2
+num_dat=1
+name_dat=( <span class="hljs-string">'mtcdnapri'</span> ) <span class="hljs-comment"># if you had more dataset, you would add them here!</span>
+count=-1 <span class="hljs-comment">#  counter will start at 0 in first iteration!</span>
+count_clock=-1
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$num_dat</span>`
+<span class="hljs-keyword">do</span>
+count=$(( count + 1 ))
+<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$num_clock</span>`
+<span class="hljs-keyword">do</span>
+count_clock=$(( count_clock + 1 ))
+./Combine_MCMC.sh <span class="hljs-variable">${path_to_data[count_clock]}</span> mcmc_files_<span class="hljs-variable">${name_dat[count]}</span>_<span class="hljs-variable">${path_to_data[count_clock]}</span> <span class="hljs-string">"`seq 1 6`"</span> <span class="hljs-variable">${path_to_data[count_clock]}</span> 20000 Y <span class="hljs-variable">${name_dat[count]}</span>_<span class="hljs-variable">${path_to_data[count_clock]}</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-comment"># Reset clock counter for next dataset</span>
+count_clock=-1
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<blockquote>
+<p>[!NOTE]
+Given that there is only one dataset, the commands above would essentially be the following:</p>
+<pre class="hljs"><code><div>./Combine_MCMC.sh ILN mcmc_files_mtcdnapri_ILN <span class="hljs-string">"`seq 1 6`"</span> ILN 20000 Y mtcdnapri_ILN
+./Combine_MCMC.sh GBM mcmc_files_mtcdnapri_GBM <span class="hljs-string">"`seq 1 6`"</span> GBM 20000 Y mtcdnapri_GBM
+</div></code></pre>
+<p>Nevertheless, we have written the full <code>for</code> loop in case you want to reuse this script with your data!</p>
+</blockquote>
+<p>Once the scripts above have finished, directories called <code>mcmc_files_part_(GBM|ILN)</code> and <code>mcmcf4traces</code> will be created inside <code>01_posterior/</code>. To map the mean time estimates with the filtered chains, we will use the dummy control file and dummy alignment file we already used when summarising those samples collected from the prior:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">## Run from `01_posterior`</span>
+<span class="hljs-comment"># You should still be in this directory </span>
+<span class="hljs-comment"># but, if not, please change directories until</span>
+<span class="hljs-comment"># you are there. Then, run the following</span>
+<span class="hljs-comment"># commands.</span>
+name_clock=( <span class="hljs-string">'ILN'</span> <span class="hljs-string">'GBM'</span> )
+num_clock=2
+name_dat=( <span class="hljs-string">'mtcdnapri'</span> )
+num_dat=1
+count=-1
+count_clock=-1
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$num_dat</span>`
+<span class="hljs-keyword">do</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"\n[[ ANALYSING DATASET "</span><span class="hljs-variable">${name_dat[count]}</span><span class="hljs-string">" ]]\n\n"</span>
+count=$(( count + 1 ))
+base_dir=$( <span class="hljs-built_in">pwd</span> )
+<span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> `seq 1 <span class="hljs-variable">$num_clock</span>`
+<span class="hljs-keyword">do</span>
+count_clock=$(( count_clock + 1 ))
+<span class="hljs-comment"># Go to directory where the concatenated</span>
+<span class="hljs-comment"># `mcmc.txt` file is and start preparing</span>
+<span class="hljs-comment"># the directory to run `MCMCtree` with</span>
+<span class="hljs-comment"># option `print = -1`</span>
+<span class="hljs-built_in">cd</span> mcmc_files_<span class="hljs-variable">${name_dat[count]}</span><span class="hljs-string">"_"</span><span class="hljs-variable">${name_clock[count_clock]}</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"[[ Generating tree file for concatenated \"mcmc.txt\" for "</span><span class="hljs-variable">${name_clock[count_clock]}</span><span class="hljs-string">" ... ... ]]\n"</span>
+cp ../../../dummy_ctl_files/*ctl .
+<span class="hljs-comment"># Run now `MCMCtree` after having modified</span>
+<span class="hljs-comment"># the global vars according to the path to</span>
+<span class="hljs-comment"># these files. Then, rename the output tree</span>
+<span class="hljs-comment"># file so we can easily identify later which</span>
+<span class="hljs-comment"># tree belongs to which dataset easier</span>
+mcmctree *ctl
+mv FigTree.tre FigTree_<span class="hljs-variable">${name_dat[count]}</span><span class="hljs-string">"_"</span><span class="hljs-variable">${name_clock[count_clock]}</span><span class="hljs-string">".tree"</span>
+<span class="hljs-built_in">printf</span> <span class="hljs-string">"\n"</span>
+<span class="hljs-comment"># Come back to main dir</span>
+<span class="hljs-built_in">cd</span> <span class="hljs-variable">$base_dir</span>
+<span class="hljs-keyword">done</span>
+<span class="hljs-keyword">done</span>
+</div></code></pre>
+<h2 id="display-your-timetree">Display your timetree</h2>
+<p>There are many software that you can currently use to display your estimated evolutionary timeline. If you are keen on generating a nice figure ready for publication (and using files that you can later use as templates for similar plots!), you can check <code>TreeViewer</code> (<a href="https://doi.org/10.1002/ece3.10873">Bianchini and Sánchez-Baracaldo, 2024</a>). We have included more details about how to generate such figures with the example data you have been working with! Please navigate to <a href="03_TreeViewer_plots/README.md">directory <code>03_TreeViewer_plots</code></a> to read more about this program and access the figures and <code>tbi</code> files we have created (more about this in the relevant <a href="03_TreeViewer_plots/README.md"><code>README.md</code> file!</a>).</p>
+<h2 id="access-the-mcmc-output-files">Access the MCMC output files</h2>
+<p>If you want to check whether you have managed to reproduce our file structure and generate the expected MCMC output files (please note that the samples collected during MCMC may vary unless you have used the same seed numbers we did!), you can directly download <a href="out_MCMC/01_MCMCtree.zip">the compressed <code>01_MCMCtree.zip</code> file</a> (if you have cloned the repository, you should have already downloaded this!).</p>
+<hr>
+<hr>
+<br>
+<p>This the end of the <code>MCMCtree</code> tutorial! We hope that you have gained new insights into how to use <code>PAML</code> programs <code>CODEML</code> and <code>MCMCtree</code> to enable the approximate likelihood calculation for timetree inference with amino acid data and that you can use the workflow you have just gone through to analyse your own datasets <img class="emoji" alt="smiley" src="data:image/png;base64,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" /></p>
+
+</body>
+</html>
